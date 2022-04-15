@@ -197,7 +197,9 @@ MultiK = function(seu, resolution = seq(0.05, 2, 0.05), nPC = 30, reps = 100, pS
 #########################
 findOptK = function(tog) {
 
-  tog.f <- tog[tog$Freq > 100 | tog$Freq ==100, ]
+  # FAILED TEST FOR GETTING RID OF NON-SIGNIFICANT Ks
+  #tog.f <- tog[tog$Freq > 100 | tog$Freq ==100, ]
+  tog.f = tog
   hpts <- chull(tog.f[, c("one_minus_rpac", "Freq")]) # in clockwise order
   hpts <- c(hpts, hpts[1])
   ch.df <- tog.f[hpts, ]
@@ -220,10 +222,11 @@ findOptK = function(tog) {
   which.k <- as.character(ch.df[which.max(ch.df$Freq), ]$ks)
 
   # step 2: see if a line segment with negative slope coming out
-  if ( all(lineseg.df[lineseg.df$p1==which.k | lineseg.df$p2==which.k, ]$slope > 0) ) {
+  pos_slope = lineseg.df[lineseg.df$p1==which.k | lineseg.df$p2==which.k, ]$slope > 0
+  pos_slope_all = all(pos_slope)
+  if ( pos_slope_all ) {
     optK <- which.k
-  }
-  else {
+  } else {
 
     # follow the line segment with the negative slope
     tmp <- which(lineseg.df[lineseg.df$p1==which.k | lineseg.df$p2==which.k, ]$slope < 0)

@@ -1,4 +1,4 @@
-# MultiK
+# MultiKParallel
 
 Single cell RNA-seq analysis tool that objectively selects multiple insightful numbers of clusters (*K*).
 
@@ -7,7 +7,7 @@ Single cell RNA-seq analysis tool that objectively selects multiple insightful n
 
 
 ## Installing
-**MultiK** relies on the following R packages: **Seurat**, **SigClust**, please install them before installing **MultiK**.
+**MultiKParallel** relies on the following R packages: **Seurat**, **SigClust**, please install them before installing **MultiK**.
 
 ```{}
 #install.packages("Seurat")
