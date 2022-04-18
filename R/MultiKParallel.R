@@ -9,7 +9,7 @@
 #' @param seed Optional numerical value. This sets a random seed for generating reproducible results
 #' @return A list with components: k is a vector of number of runs for each K. clusters is a list containing the clustering labels for each subsampling run at each resolution parameter. consensus is a list containing a consensus matrix for each K.
 #' @export
-MultiKParallel <- function(seu, resolution = seq(0.05, 2, 0.05), nPC = 30, reps = 100, pSample = 0.8, seed = NULL) {
+MultiKParallel <- function(seu, resolution = seq(0.05, 2, 0.05), nPC = 30, reps = 100, pSample = 0.8, seed = NULL, numCores = NULL) {
         # setting seed for reproducibility
         if (is.null(seed) == TRUE) {
                 seed <- timeSeed <- as.numeric(Sys.time())
@@ -17,8 +17,10 @@ MultiKParallel <- function(seu, resolution = seq(0.05, 2, 0.05), nPC = 30, reps 
         set.seed(seed)
         
         # setting up doParallel
-        numCores <- parallel::detectCores() / 2
-        cl <- makeCluster(numCores)
+        if (is.null(numCores)) {
+                numCores <- parallel::detectCores() / 2
+        }
+        cl <- parallel::makeCluster(numCores)
         doSNOW::registerDoSNOW(cl)
         #doParallel::registerDoParallel(numCores)
         print(paste0("doSNOW: numCores = ", numCores, "."))
