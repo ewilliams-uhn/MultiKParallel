@@ -103,7 +103,8 @@ MultiKParallel <- function(seu, resolution = seq(0.05, 2, 0.05), nPC = 30, reps 
                 print(paste("k =", k, sep=" "))
                 idx <- which(ks == k)
                 cluster.k <- clusters[idx]
-
+                
+                #TODO: parallel
                 for (s in 1: length(cluster.k) ) {
                         print(paste("run", s, sep = ""))
                         currClusters = names(cluster.k[[s]])
