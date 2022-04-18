@@ -20,17 +20,17 @@ and **doSNOW**. Please install them before installing **MultiKParallel**.
 ```{}
 #install.packages("devtools")
 #library(devtools)
-#install_github("siyao-liu/MultiK")
+#install_github("ewilliams-uhn/MultiKParallel")
 ```
 
-**MultiK( )** is the main function that implements the subsampling and application of the Seurat clustering over multiple resolution parameters. Details about this function can be found in the user manual:
+**MultiKParallel( )** is the main function that implements the subsampling and application of the Seurat clustering over multiple resolution parameters. Details about this function can be found in the user manual:
 
 ```{}
-?MultiK
+?MultiKParallel
 ```
 
 
-The main function, **MultiK( )**, takes a Seurat object with the normalized expression matrix and other parameters set by default values if not specified. MultiK explores a range of resolution parameters (from 0.05 to 2.00 with a step size of 0.05) in Seurat clustering, and aggregates all the clustering runs that give rise to the same K groups regardless of the resolution parameter and computes a consensus matrix for each K.
+The main function, **MultiKParallel( )**, takes a Seurat object with the normalized expression matrix and other parameters set by default values if not specified. MultiK explores a range of resolution parameters (from 0.05 to 2.00 with a step size of 0.05) in Seurat clustering, and aggregates all the clustering runs that give rise to the same K groups regardless of the resolution parameter and computes a consensus matrix for each K.
 
 Note: MultiK re-selects highly variable genes in each subsampling run. Also, MultiK, by default, uses 30 principal components and 20 K-nearest neighbors in Seurat clustering.  
 
@@ -50,7 +50,7 @@ seu <- p3cl
 
 Run subsampling and consensusing clustering to generate output for evaluation (this step can take a long time). For demonstration purpose, we are running 10 reps here. For real data pratice, we recommend using at least 100 reps.
 ```{}
-multik <- MultiK(seu, reps=10)
+multik <- MultiKParallel(seu, reps=10)
 ```
 
 Make MultiK diagnostic plots: 
