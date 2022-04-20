@@ -9,10 +9,13 @@ Description: Estimation of optimal cluster number (K) is a crucial step in clust
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: 
     doSNOW,
     doParallel,
     foreach,
     parallel,
-    Seurat
+    Seurat,
+    ggplot2,
+    pheatmap,
+    sigclust

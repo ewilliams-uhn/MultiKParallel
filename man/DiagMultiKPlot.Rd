@@ -15,5 +15,5 @@ DiagMultiKPlot(ks, res)
 A bar plot of the frequency of K, a plot of rPAC score for each K, and a scatterplot of (1-rPAC) vs. the frequency of K
 }
 \description{
-Takes the output from MultiK() function, and generate diagnostic plots for determining optimal Ks
+Takes the output from MultiKParallel() function, and generate diagnostic plots for determining optimal Ks
 }
